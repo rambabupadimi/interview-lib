@@ -1,0 +1,33 @@
+{
+  "name": "backend-portal",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "backend-portal/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "backend-portal:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "backend-portal:build:development"
+        },
+        "production": {
+          "buildTarget": "backend-portal:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "backend-portal/jest.config.ts"
+      }
+    }
+  }
+}
