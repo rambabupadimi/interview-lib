@@ -5,8 +5,8 @@
   "scripts": {
     "admin-portal": "nx serve admin-portal --port 4200",
     "user-portal": "nx serve user-portal --port 4201",
-    "backend-portal-build" : "nx build backend-portal",
-    "backend-portakl":"nx serve backend-portal"
+    "backend-portal-build": "nx build backend-portal",
+    "backend-portakl": "nx serve backend-portal"
   },
   "private": true,
   "devDependencies": {
@@ -95,6 +95,7 @@
     "@ngrx/router-store": "~17.0.0",
     "@ngrx/store": "~17.0.0",
     "@nrwl/node": "^19.3.0",
+    "@nrwl/nx-cloud": "^19.0.0",
     "axios": "^1.6.0",
     "g": "^2.0.1",
     "react": "18.3.1",
