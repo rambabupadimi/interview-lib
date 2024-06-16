@@ -5,6 +5,8 @@
   "scripts": {
     "admin-portal": "nx serve admin-portal --port 4200",
     "user-portal": "nx serve user-portal --port 4201",
+    "admin-portal-build": "nx build admin-portal",
+    "user-portal-build": "nx build user-portal",
     "backend-portal-build": "nx build backend-portal",
     "backend-portal": "nx serve backend-portal ",
     "build":"npx nx run-many -t build"
