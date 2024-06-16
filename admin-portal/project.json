@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/admin-portal",
+        "outputPath": "admin-portal/dist/admin-portal",
         "index": "admin-portal/src/index.html",
         "main": "admin-portal/src/main.ts",
         "polyfills": ["zone.js"],
