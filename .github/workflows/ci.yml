@@ -29,4 +29,5 @@ jobs:
 
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx run-many -t build
+      - run: npm run build
+      
