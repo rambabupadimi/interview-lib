@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id            Int       @id @default(autoincrement())
+  name          String
+  email         String    @unique
+  password_hash String?   @db.Text
+  role          UserType  @default(ADMIN)
+  status        Status    @default(ACTIVE)
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+  reviews       reviews[]
+
+  @@index([status])
+}
+
+model technologies {
+  id          Int       @id @default(autoincrement())
+  code        String    @unique
+  name        String
+  description String?   @db.Text
+  image_key   String?   @db.Text
+  status      Status    @default(ACTIVE)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  reviews     reviews[]
+
+  @@index([status])
+}
+
+model reviews {
+  id            Int          @id @default(autoincrement())
+  title         String       @db.Text
+  description   String?      @db.Text
+  user          users        @relation(fields: [user_id], references: [id])
+  user_id       Int
+  technology    technologies @relation(fields: [technology_id], references: [id])
+  technology_id Int
+  status        Status       @default(ACTIVE)
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @updatedAt
+
+  @@index([status])
+}
+
+enum UserType {
+  USER
+  ADMIN
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+  DELETED
+}
