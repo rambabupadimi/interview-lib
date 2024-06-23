@@ -1,12 +1,16 @@
-.container {
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height:100%;
   }
   
   .form {
     width: 300px;
+    background: #f4f4f4;
+    padding: 40px;
+    border: 1px solid #cecece;
+    border-radius: 6px;
   }
   
   .form-field {
@@ -16,4 +20,13 @@
   
   .submit-btn {
     width: 100%;
+    background: white  !important;
   }
+
+  ::ng-deep .mdc-text-field--outlined {
+    background-color: white !important;
+}
+
+.logo-title {
+  
+}

@@ -1,0 +1,39 @@
+<div class="technologies-section">
+
+    <div class="technologies-left-section">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline">
+              <mat-label>Code</mat-label>
+              <input matInput formControlName="code" required>
+              <mat-error *ngIf="myForm.get('firstName')?.invalid && myForm.get('firstName')?.touched">
+                Code name is required
+              </mat-error>
+            </mat-form-field>
+            <br/>
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" required>
+              <mat-error *ngIf="myForm.get('code')?.invalid && myForm.get('code')?.touched">
+                Name is required
+              </mat-error>
+            </mat-form-field>
+            <br/>
+            <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="description" required>
+              <mat-error *ngIf="myForm.get('description')?.invalid && myForm.get('description')?.touched">
+              Description is required
+               </mat-error>
+            </mat-form-field>
+            <br/>
+          
+            <button mat-stroked-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+          </form>
+    </div>
+
+    <div class="technologies-right-section">
+        <app-technologies-list></app-technologies-list>
+
+    </div>
+   
+</div>

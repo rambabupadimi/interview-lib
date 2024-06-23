@@ -1,0 +1,57 @@
+<div class="questions-section">
+
+    <div class="questions-left-section">
+        <div class="question">
+        <div>Enter Question :</div> <br/>
+        <div class="NgxEditor__Wrapper">
+            <ngx-editor-menu [editor]="questionEditor" [toolbar]="toolbar"> </ngx-editor-menu>
+            <ngx-editor  [editor]="questionEditor" [placeholder]="'Type question here...'"></ngx-editor>
+          </div>
+        </div>
+        <br/><br/>    
+        <div class="answer">
+            <div>Enter Answer :</div> <br/>
+            <div class="NgxEditor__Wrapper">
+                <ngx-editor-menu [editor]="answerEditor" [toolbar]="toolbar"> </ngx-editor-menu>
+                <ngx-editor  [editor]="answerEditor" [placeholder]="'Type  answer here...'"></ngx-editor>
+              </div>
+            </div>
+        <br/>
+
+        <button mat-stroked-button color="primary" >Save</button>
+    </div>
+
+   
+
+      <div class="questions-right-section">
+              
+        <mat-accordion>
+            <mat-expansion-panel >
+              <mat-expansion-panel-header>
+                <mat-panel-title> What is Angular? </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>This is the primary content of the panel.</p>
+              <div class="btn-section">
+                <button mat-stroked-button color="primary">EDIT</button>
+                <button mat-stroked-button color="primary">DELETE</button>
+        
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+              <mat-expansion-panel-header>
+                <mat-panel-title> What is SPA? </mat-panel-title>
+
+              </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+              <div class="btn-section">
+                <button mat-stroked-button color="primary">EDIT</button>
+                <button mat-stroked-button color="primary">DELETE</button>
+        
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+            
+
+      </div>
+
+</div>

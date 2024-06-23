@@ -38,3 +38,10 @@ $admin-portal-theme: mat.define-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+button {
+  border-radius: 6px;
+  background-color: #fff;
+  border-color: #c3c3c3 !important;
+  color: #000 !important;
+}
+

@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromAuth from './+state/auth.reducer';
 import { AuthEffects } from './+state/auth.effects';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,9 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     RouterModule.forChild(adminAuthRoutes),
     RouterModule,
-    
-    // StoreModule.forFeature(fromAuth.AUTH_FEATURE_KEY, fromAuth.authReducer),
-    // EffectsModule.forFeature([AuthEffects]),
+
+    StoreModule.forFeature(fromAuth.AUTH_FEATURE_KEY, fromAuth.authReducer),
+    EffectsModule.forFeature([AuthEffects]),
   ],
 })
 export class AdminAuthModule {}

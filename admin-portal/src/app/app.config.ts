@@ -1,17 +1,31 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { StoreModule, provideStore } from '@ngrx/store';
-import { provideEffects } from '@ngrx/effects';
+import { StoreModule, StoreRootModule, provideStore } from '@ngrx/store';
+import { EffectsModule, provideEffects } from '@ngrx/effects';
 import { appReducer } from '../+state/app.reducer';
 import { AppEffects } from '../+state/app.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { isDevMode } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { AppInterceptor } from '../app.interceptor';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
-   // provideEffects([AppEffects]),
-    provideStore({}),
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
+    importProvidersFrom(
+      StoreModule.forRoot({
+      }),
+      EffectsModule.forRoot({}),
+      HttpClientModule,
+      BrowserAnimationsModule,
+
+    ),
+
+    provideStore(),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
@@ -23,6 +37,7 @@ export const appConfig: ApplicationConfig = {
     
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
+    
   
 
   ],
