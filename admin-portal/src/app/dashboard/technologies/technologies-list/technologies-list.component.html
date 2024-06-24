@@ -1,12 +1,15 @@
 <div class="technology-list">
-<div class="technology-item">
+
+
+
+<div class="technology-item" *ngFor="let item of technologiesList">
     <div class="left">
    
-    <div class="code">C0001</div>
+    <div class="code">{{item.code}}</div>
     </div>
     <div class="right">
-    <div class="name">Angular</div>
-    <div class="descriptoin">Web development</div>
+    <div class="name">{{item.name}}</div>
+    <div class="descriptoin">{{item.description}}</div>
     </div>
     <div class="end">
         <button mat-stroked-button color="primary">EDIT</button>
@@ -15,18 +18,4 @@
     </div>
 </div>
 
-<div class="technology-item">
-    <div class="left">
-    <div class="code">C0001</div>
-    </div>
-    <div class="right">
-    <div class="name">Angular</div>
-    <div class="descriptoin">Web development</div>
-    </div>
-    <div class="end">
-        <button mat-stroked-button color="primary">EDIT</button>
-        <button mat-stroked-button color="primary">DELETE</button>
-
-    </div>
-</div>
 </div>

@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { AppConstants } from 'admin-portal/src/app-constants';
 import { Observable } from 'rxjs';
-import { AddTechnologyRequest, EditTechnologyRequest } from './technologies.model';
+import { AddTechnologyRequest, EditTechnologyRequest, TechnologyModel } from './technologies.model';
+import { APIResponse } from 'libs/admin-auth/src/lib/admin-auth/+state/auth.models';
 
 @Injectable({
   providedIn: 'root'

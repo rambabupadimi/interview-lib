@@ -13,3 +13,11 @@ export interface EditTechnologyRequest {
     technology_id: number;
 }
 
+export interface TechnologyModel {
+    code: string;
+    description: string;
+    id: number;
+    image_key: string;
+    name: string;
+    status: string;
+}

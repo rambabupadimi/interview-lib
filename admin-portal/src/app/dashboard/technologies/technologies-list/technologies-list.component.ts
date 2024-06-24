@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { TechnologiesService } from '../technologies.service';
+import { TechnologyModel } from '../technologies.model';
 
 @Component({
   selector: 'app-technologies-list',
@@ -12,6 +13,7 @@ import { TechnologiesService } from '../technologies.service';
 })
 export class TechnologiesListComponent implements OnInit {
 
+  technologiesList: Array<TechnologyModel> = [];
 
   constructor(private service: TechnologiesService){
 
@@ -19,8 +21,9 @@ export class TechnologiesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.technologyList().subscribe({
-      next:(result) =>{
+      next:(result:any) =>{
         console.log(result);
+        this.technologiesList = result?.data;
       },
       error:(error) =>{
         console.log(error);
