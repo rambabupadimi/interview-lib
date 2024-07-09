@@ -1,6 +1,20 @@
 <div class="questions-section">
 
     <div class="questions-left-section">
+
+        <div class="technology">
+          <div>Select Technology :</div> <br/>
+          <mat-form-field>
+            <mat-label>Cars</mat-label>
+            <select matNativeControl required>
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+          </mat-form-field>
+        </div>
+
         <div class="question">
         <div>Enter Question :</div> <br/>
         <div class="NgxEditor__Wrapper">
@@ -26,29 +40,22 @@
       <div class="questions-right-section">
               
         <mat-accordion>
+
+          @for (item of questionAndAnswersList; track $index) {
             <mat-expansion-panel >
               <mat-expansion-panel-header>
-                <mat-panel-title> What is Angular? </mat-panel-title>
+                <mat-panel-title [innerHTML]="item.title"> </mat-panel-title>
               </mat-expansion-panel-header>
-              <p>This is the primary content of the panel.</p>
+              <p [innerHTML]="item.description"> </p>
               <div class="btn-section">
                 <button mat-stroked-button color="primary">EDIT</button>
                 <button mat-stroked-button color="primary">DELETE</button>
         
               </div>
             </mat-expansion-panel>
-            <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
-              <mat-expansion-panel-header>
-                <mat-panel-title> What is SPA? </mat-panel-title>
-
-              </mat-expansion-panel-header>
-              <p>I'm visible because I am open</p>
-              <div class="btn-section">
-                <button mat-stroked-button color="primary">EDIT</button>
-                <button mat-stroked-button color="primary">DELETE</button>
-        
-              </div>
-            </mat-expansion-panel>
+          }
+         
+          
           </mat-accordion>
             
 
