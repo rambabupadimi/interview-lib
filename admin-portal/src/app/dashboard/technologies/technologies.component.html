@@ -27,12 +27,20 @@
             </mat-form-field>
             <br/>
           
-            <button mat-stroked-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+            <button *ngIf="!isEdit" mat-stroked-button color="primary" type="submit" [disabled]="myForm.invalid">Add</button>
+            <div *ngIf="isEdit">
+              <button mat-stroked-button color="primary" type="button" (click)="onClose()" >Cancel</button>
+              <button mat-stroked-button color="primary" type="submit" [disabled]="myForm.invalid">Update</button>
+
+            </div>
           </form>
     </div>
 
     <div class="technologies-right-section">
-        <app-technologies-list></app-technologies-list>
+        <app-technologies-list 
+        [list] = "technologiesList"
+        (deleteTechnologyEmitter)="onDeleteTechnology($event)"
+        (editTechnologyEmitter)="onEditTechnology($event)"></app-technologies-list>
 
     </div>
    

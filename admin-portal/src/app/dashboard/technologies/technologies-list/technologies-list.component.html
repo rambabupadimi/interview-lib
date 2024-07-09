@@ -2,7 +2,7 @@
 
 
 
-<div class="technology-item" *ngFor="let item of technologiesList">
+<div class="technology-item" *ngFor="let item of list">
     <div class="left">
    
     <div class="code">{{item.code}}</div>
@@ -12,8 +12,8 @@
     <div class="descriptoin">{{item.description}}</div>
     </div>
     <div class="end">
-        <button mat-stroked-button color="primary">EDIT</button>
-        <button mat-stroked-button color="primary">DELETE</button>
+        <button mat-stroked-button color="primary" (click)="editTechnology(item)">EDIT</button>
+        <button mat-stroked-button color="primary" (click)="deleteTechnology(item)">DELETE</button>
 
     </div>
 </div>
