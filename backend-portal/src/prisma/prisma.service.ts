@@ -9,7 +9,7 @@ export class PrismaService extends PrismaClient {
       datasources: {
         db: {
           // url: config.get("DATABASE_URL")
-          url: "postgres://tech_dev_user:PgVXnN9i2SV1rlUT5wQV2o94Z9pnsb05@dpg-cpjtfon109ks73es2d50-a.oregon-postgres.render.com/tech_dev",
+          url: "mysql://admin:v6DOkWstIf6OSRkAnF5n@database-1.cjc6ky2yuako.us-east-1.rds.amazonaws.com:3306/tech_dev",
         },
       },
     });
