@@ -4,13 +4,12 @@
 
         <div class="technology">
           <div>Select Technology :</div> <br/>
-          <mat-form-field>
-            <mat-label>Cars</mat-label>
-            <select matNativeControl required>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
+          <mat-form-field appearance="outline">
+            <mat-label>Technology</mat-label>
+            <select matNativeControl  [value]="selectedTechnologyId" >
+              @for (item of technologyList; track $index) {
+                <option [value]="item.id">{{item.name}}</option>
+              }
             </select>
           </mat-form-field>
         </div>
@@ -39,6 +38,14 @@
 
       <div class="questions-right-section">
               
+
+        <div>
+          @for (item of technologyList; track $index) {
+            <div class="chip-item">{{item.name}}</div>
+          }
+
+        </div>
+
         <mat-accordion>
 
           @for (item of questionAndAnswersList; track $index) {

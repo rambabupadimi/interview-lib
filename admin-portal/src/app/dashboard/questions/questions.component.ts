@@ -7,6 +7,7 @@ import { QuestionsService } from './questions.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { TechnologiesService } from '../technologies/technologies.service';
 
 @Component({
   selector: 'app-questions',
@@ -37,12 +38,15 @@ export class QuestionsComponent implements OnInit, OnDestroy{
   ];
 
   questionAndAnswersList:any = [];
-  constructor(private serive: QuestionsService){}
+  technologyList:any = [];
+  selectedTechnologyId = -1;
+  constructor(private serive: QuestionsService, private technologyService: TechnologiesService){}
 
   ngOnInit(): void {
     this.answerEditor = new Editor();
     this.questionEditor = new Editor();
     this.loadQuestionsList();
+    this.loadTechnologyList();
   }
 
   ngOnDestroy(): void {
@@ -54,6 +58,17 @@ export class QuestionsComponent implements OnInit, OnDestroy{
     this.serive.questionsList().subscribe({
       next:(result:any) =>{
         this.questionAndAnswersList = result.data;
+      },
+      error:(error)=>{
+        console.log(error);
+      }
+    })
+  }
+
+  loadTechnologyList() {
+    this.technologyService.technologyList().subscribe({
+      next:(result:any) =>{
+        this.technologyList = result.data;
       },
       error:(error)=>{
         console.log(error);
