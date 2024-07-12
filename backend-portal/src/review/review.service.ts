@@ -131,10 +131,10 @@ export class ReviewService {
         }
     }
 
-    async list(){
+    async list(technologyId: number){
         try{
           const list = await this.prisma.reviews.findMany({
-            where:{status: "ACTIVE"},
+            where:{technology_id: technologyId,status: "ACTIVE"},
             select:{
                 id: true,
                 title: true,

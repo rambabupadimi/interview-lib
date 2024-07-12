@@ -30,9 +30,9 @@ export class ReviewController {
         return this.reviewService.delete(id);
     }
 
-    @Get('list')
+    @Get('list/:technology_id')
     @HttpCode(200)
-    list(){
-        return this.reviewService.list();
+    list(@Param("technology_id", ParseIntPipe) technology_id: number){
+        return this.reviewService.list(technology_id);
     }
 }
