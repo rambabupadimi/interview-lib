@@ -23,8 +23,11 @@ export class QuestionsService {
     return this.http.delete(AppConstants.url+'review/delete/'+id);
   }  
 
-  questionsList() {
-    return this.http.get(AppConstants.url+'review/list');
+  questionsList(id:number) { 
+    if(id == -1) {
+      return this.http.get(AppConstants.url+'review/list');
+    }
+    return this.http.get(AppConstants.url+'review/list/'+id);
   }
 
 }

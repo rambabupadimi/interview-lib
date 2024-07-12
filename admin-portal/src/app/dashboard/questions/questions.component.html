@@ -49,7 +49,7 @@
 
         <div style="margin-bottom: 24px;">
           @for (item of technologyList; track $index) {
-            <div class="chip-item">{{item.name}}</div>
+            <div class="chip-item" (click)="selectItem(item.id)"  [ngClass]="item.id ===this.selectItemId ? 'active' : ''">{{item.name}}</div>
           }
 
         </div>

@@ -49,6 +49,9 @@ export class QuestionsComponent implements OnInit, OnDestroy{
   isEdit = false;
   selectedReviewId = -1;
 
+  selectItemId = -1;
+  
+
   constructor(private service: QuestionsService, private technologyService: TechnologiesService){}
 
   ngOnInit(): void {
@@ -64,7 +67,7 @@ export class QuestionsComponent implements OnInit, OnDestroy{
   }
 
   loadQuestionsList() {
-    this.service.questionsList().subscribe({
+    this.service.questionsList(this.selectItemId).subscribe({
       next:(result:any) =>{
         this.questionAndAnswersList = result.data;
       },
@@ -147,5 +150,10 @@ export class QuestionsComponent implements OnInit, OnDestroy{
         }
       })
     }
+  }
+
+  selectItem(id:any) {
+    this.selectItemId = id;
+    this.loadQuestionsList();
   }
 }

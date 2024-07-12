@@ -53,4 +53,12 @@ mat-expansion-panel {
     border-radius: 6px;
     margin: 6px;
     display: inline-block;
+    cursor: pointer;
+    background-color: white
+}
+
+.chip-item.active {
+    border: 1px solid black;
+    background: black;
+    color: white;
 }
