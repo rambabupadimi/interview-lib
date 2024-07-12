@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AddQuestionRequest, EditQuesitonRequest } from './questions.model';
+import { AddQuestionRequest, EditQuestionRequest } from './questions.model';
 import { HttpClient } from '@angular/common/http';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { AppConstants } from 'admin-portal/src/app-constants';
@@ -15,7 +15,7 @@ export class QuestionsService {
     return this.http.post(AppConstants.url+'review/create',request);
   }
 
-  editQuestion(request: EditQuesitonRequest) {
+  editQuestion(request: EditQuestionRequest) {
     return this.http.put(AppConstants.url+'review/update',request);
   }
 

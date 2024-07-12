@@ -2,13 +2,13 @@
 
 export interface AddQuestionRequest {
     technology_id: number;
-    name: string;
+    title: string;
     description: string;
 }
 
-export interface EditQuesitonRequest {
+export interface EditQuestionRequest {
     technology_id: number;
-    name: string;
+    title: string;
     description: string;
     review_id:number;
 }

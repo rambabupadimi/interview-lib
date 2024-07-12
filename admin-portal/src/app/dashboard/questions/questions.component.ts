@@ -8,12 +8,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { TechnologiesService } from '../technologies/technologies.service';
+import {MatSelectModule} from '@angular/material/select';
+import { AddQuestionRequest, EditQuestionRequest } from './questions.model';
 
 @Component({
   selector: 'app-questions',
   standalone: true,
   imports: [CommonModule,NgxEditorModule, MatExpansionModule, MatButtonModule, 
+    MatSelectModule,
     MatInputModule,
+    FormsModule,
     FormsModule,
     MatFormFieldModule],
   templateUrl: './questions.component.html',
@@ -40,7 +44,12 @@ export class QuestionsComponent implements OnInit, OnDestroy{
   questionAndAnswersList:any = [];
   technologyList:any = [];
   selectedTechnologyId = -1;
-  constructor(private serive: QuestionsService, private technologyService: TechnologiesService){}
+  questionContent:any = '';
+  answerContent:any = '';
+  isEdit = false;
+  selectedReviewId = -1;
+
+  constructor(private service: QuestionsService, private technologyService: TechnologiesService){}
 
   ngOnInit(): void {
     this.answerEditor = new Editor();
@@ -55,7 +64,7 @@ export class QuestionsComponent implements OnInit, OnDestroy{
   }
 
   loadQuestionsList() {
-    this.serive.questionsList().subscribe({
+    this.service.questionsList().subscribe({
       next:(result:any) =>{
         this.questionAndAnswersList = result.data;
       },
@@ -74,5 +83,69 @@ export class QuestionsComponent implements OnInit, OnDestroy{
         console.log(error);
       }
     })
+  }
+
+  onTechnologySelect(event:any){
+    console.log(event);
+  }
+
+  saveQuestion(){
+    console.log(this.selectedTechnologyId);
+    console.log(this.questionContent);
+    console.log(this.answerContent);
+
+    if(this.selectedTechnologyId && this.questionContent.length >0 ) {
+      const request: AddQuestionRequest = {technology_id:+this.selectedTechnologyId,title: this.questionContent,description:this.answerContent};
+      this.service.addQuestion(request).subscribe({
+        next:(request) =>{
+            console.log(request);
+            this.loadQuestionsList();
+            this.questionContent = '';
+            this.answerContent = '';
+        },
+        error:(error) =>{
+          console.log(error);
+        }
+      })
+    }
+  }
+
+  editQuestion(item:any) {
+    console.log(item);
+    this.isEdit = true;
+    this.selectedTechnologyId = item.technology_id;
+    this.questionContent = item.title;
+    this.answerContent = item.description;
+    this.selectedReviewId = item.id;
+  }
+
+  deleteQuestion(item:any){
+    console.log(item);
+  }
+
+  cancelEdit(){
+    this.isEdit = false;
+    this.selectedTechnologyId = -1;
+    this.questionContent = '';
+    this.answerContent = '';
+  }
+
+  updateQuestion(){
+    if(this.selectedTechnologyId && this.questionContent.length >0 && this.answerContent.length>0) {
+      const request: EditQuestionRequest = {technology_id:+this.selectedTechnologyId,title: this.questionContent,description:this.answerContent,review_id:this.selectedReviewId};
+      this.service.editQuestion(request).subscribe({
+        next:(request) =>{
+            console.log(request);
+            this.loadQuestionsList();
+            this.isEdit = false;
+            this.selectedTechnologyId = -1;
+            this.questionContent = '';
+            this.answerContent = '';
+        },
+        error:(error) =>{
+          console.log(error);
+        }
+      })
+    }
   }
 }
