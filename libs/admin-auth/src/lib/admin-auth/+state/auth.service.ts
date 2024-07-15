@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-//  url = "https://interview-lib-pwtn.onrender.com";
+ url = "https://interview-lib-pwtn.onrender.com";
 
-url = "http://localhost:3000";
+//url = "http://localhost:3000";
 
   constructor(private httpClient: HttpClient) { }
 
