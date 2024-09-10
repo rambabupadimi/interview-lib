@@ -7,8 +7,8 @@ export default defineConfig({
     ...nxE2EPreset(__filename, {
       cypressDir: 'src',
       webServerCommands: {
-        default: 'nx run user-portal:serve',
-        production: 'nx run user-portal:preview',
+        default: 'nx run user-portal:serve:development',
+        production: 'nx run user-portal:serve:production',
       },
       ciWebServerCommand: 'nx run user-portal:serve-static',
     }),
