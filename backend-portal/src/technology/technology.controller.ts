@@ -3,7 +3,7 @@ import { UserJwtGuard } from '../auth/guard';
 import { TechnologyService } from './technology.service';
 import { createTechDto, updateTechDto } from './dto/technology.dto';
 
-@UseGuards(UserJwtGuard)
+// @UseGuards(UserJwtGuard)
 @Controller('technology')
 export class TechnologyController {
     constructor(private technologyService: TechnologyService){}

@@ -5,11 +5,11 @@ import {GetUser} from '../auth/decorator';
 import { createReviewDto, updateReviewDto } from './dto/review.dto';
 import { UserDto } from '../auth/dto';
 
-@UseGuards(UserJwtGuard)
 @Controller('review')
 export class ReviewController {
     constructor(private reviewService: ReviewService){}
 
+    @UseGuards(UserJwtGuard)
     @Post('create')
     @HttpCode(201)
     create(@Body() body: createReviewDto, @GetUser() user: UserDto) {
