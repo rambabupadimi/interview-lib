@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/user-portal",
+        "outputPath": "user-portal/dist/user-portal",
         "index": "user-portal/src/index.html",
         "browser": "user-portal/src/main.ts",
         "polyfills": ["zone.js"],
