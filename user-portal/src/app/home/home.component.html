@@ -1,0 +1,33 @@
+<!-- <p>home works!</p> -->
+<!-- <p *ngFor="let item of technologyList$ | async"> {{item}}</p> -->
+
+<ngb-alert [dismissible]="false" [type]="'success'">
+	<strong>InterviewLIB</strong>
+</ngb-alert>
+
+<div class="parent">
+    <section >
+        <div class="technology_list">
+                <ul *ngIf="technologyList$">
+                    <li *ngFor="let item of technologyList$" [ngClass]="{'active': item.id === technologyId}" (click)="selectTechnology(item.id)">{{item.name}}</li>
+                </ul> 
+        </div>
+    </section>
+
+    <section >
+        <div class="question_and_answers_section">
+            <div class="questions_section">
+                <ul>
+                    <li *ngFor="let item of questionsList$" (click)="selectQuestion(item)" [ngClass]="{'active': item.id === questionId}">
+                        <span [innerHTML]="item.title"></span></li>
+                </ul>   
+            </div>
+
+            <div class="answers_section">
+                <ngx-editor-menu [editor]="answerEditor" [toolbar]="toolbar"> </ngx-editor-menu>
+                <ngx-editor  [editor]="answerEditor"  [(ngModel)]="selectedAnswer" [placeholder]="'Type question here...'"></ngx-editor>
+                <!-- <p [innerHTML]="selectedAnswer"></p> -->
+            </div>
+        </div>
+    </section>
+</div>
