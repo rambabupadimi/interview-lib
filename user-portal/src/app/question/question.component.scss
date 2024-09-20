@@ -1,0 +1,54 @@
+
+    .questions-left-section {
+           // width: 40%;
+           // margin-right: 20px;
+            border: 1px solid #c3c3c3;
+            padding: 34px !important;
+            border-radius: 6px;
+          
+    }
+  
+
+
+button {
+    border-radius: 6px;
+    background-color: #fff;
+    border-color: #c3c3c3 !important;
+    padding: 12px 20px;
+}
+
+
+
+:host ::ng-deep .NgxEditor__Content {
+    min-height: 60px;
+}
+
+mat-expansion-panel {
+    box-shadow: none !important;
+    border-radius:none !important;
+    border:1px solid #c3c3c3;
+}
+.btn-section {
+    display: flex;
+    justify-content: right;
+    button {
+        margin-right: 12px;
+    }
+}
+
+
+.chip-item {
+    padding: 12px;
+    border: 1px solid gray;
+    border-radius: 6px;
+    margin: 6px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: white
+}
+
+.chip-item.active {
+    border: 1px solid black;
+    background: black;
+    color: white;
+}

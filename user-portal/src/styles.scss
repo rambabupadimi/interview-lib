@@ -1,5 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+//@import '~quill/dist/quill.bubble.css';
+//@import 'nodemodules/quill/dist/quill.snow.css';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the theme object.
+$user-portal-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($user-portal-theme);
+}
+
 html, body { height: 100%; }
 body, p, span  { margin: 0px !important; font-family: Roboto, "Helvetica Neue", sans-serif; }
 button {
@@ -10,7 +39,24 @@ button {
 }
 
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('/user-portal/public/assets/fonts/Poppins-Light.ttf') format('ttf');
+}
+
+
+.ql-font-poppins {
+  font-family: 'Poppins',serif;
+}
+
+
+
+.ql-editor {
+  font-size: 16px;
+  font-family: "Poppins";
+}
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+//@import 'bootstrap/scss/bootstrap';
+// @import '~material-icons/iconfont/material-icons.css';
 

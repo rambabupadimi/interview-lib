@@ -1,33 +1,160 @@
 <!-- <p>home works!</p> -->
 <!-- <p *ngFor="let item of technologyList$ | async"> {{item}}</p> -->
 
-<ngb-alert [dismissible]="false" [type]="'success'">
-	<strong>InterviewLIB</strong>
-</ngb-alert>
+<!-- <ngb-alert [dismissible]="false" [type]="'success'">
+  <strong>InterviewLIB</strong>
+</ngb-alert> -->
+
+
+<!-- <quill-editor [(ngModel)]="content" [modules]="editorModules"></quill-editor> -->
+<!-- <div  style="height: 400px;width: 600px;">
+  <div #editorContainer class="editor-container"></div>
+  <button (click)="getData()">Get Data</button>
+</div> -->
+
+<section>
+  <div class="header">
+    <div class="content">
+      <b>Interview LIB</b>
+
+       <div class="signin-btn">
+        @if (isUserLoggedIn) {
+        <div class="profile">
+          <div class="name-section">
+            <p>{{ profileName }}</p>
+            <span (click)="logout()"><u>Logout</u></span>
+          </div>
+          <div>
+            <img [src]="profileURL" />
+          </div>
+        </div>
+        } @else {
+        <div id="google-btn"></div>
+        }
+
+        <!-- <div
+        id="g_id_onload"
+        data-client_id="711574190393-32970qhrrtds70m1sregudgh2pe20v8r.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-auto_prompt="false"
+        data-callback="handleOauthResponse"
+      ></div>
+
+      <div
+        class="g_id_signin"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="filled_blue"
+        data-text="signin_with"
+        data-size="medium"
+        data-logo_alignment="left"
+      ></div> -->
+      </div>
+    </div>
+  </div>
+</section>
 
 <div class="parent">
-    <section >
-        <div class="technology_list">
-                <ul *ngIf="technologyList$">
-                    <li *ngFor="let item of technologyList$" [ngClass]="{'active': item.id === technologyId}" (click)="selectTechnology(item.id)">{{item.name}}</li>
-                </ul> 
-        </div>
-    </section>
+  <section>
+    <div class="technology_list">
+      <ul *ngIf="technologyList$">
+        <li
+          *ngFor="let item of technologyList$"
+          [ngClass]="{ active: item.id === technologyId }"
+          (click)="selectTechnology(item.id)"
+        >
+          {{ item.name }}
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <section >
-        <div class="question_and_answers_section">
-            <div class="questions_section">
-                <ul>
-                    <li *ngFor="let item of questionsList$" (click)="selectQuestion(item)" [ngClass]="{'active': item.id === questionId}">
-                        <span [innerHTML]="item.title"></span></li>
-                </ul>   
+  <section>
+    <div class="question_and_answers_section">
+      <div class="questions_section">
+        <ul>
+          <li
+            *ngFor="let item of questionsList$"
+            (click)="selectQuestion(item)"
+            [ngClass]="{ active: item.id === questionId }"
+          >
+            <span [innerHTML]="item.title"></span>
+          </li>
+        </ul>
+
+        <div class="add-question" (click)="addNewQuestion()">Add new question and answer</div>
+      </div>
+
+      <div class="answers_section">
+        <div class="answer-section-header">
+          <div class="add-answer">
+            <button (click)="addAnswer()">Add your answer</button>
+          </div>
+          <div>
+            <ul class="organisations">
+              <li>TCS</li>
+              <li>Infosys</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- <ngx-editor-menu [editor]="answerEditor" [toolbar]="toolbar"> </ngx-editor-menu> -->
+        <div class="individual-answer-section">
+          <div class="profile-section">
+
+            <div class="profile-section-left">
+                <mat-icon style="cursor: pointer;color: gray;">thumb_up</mat-icon>&nbsp;<span>6</span>
+                <span style="color: gray;padding-left: 6px;">|</span>  
+                <mat-icon style="cursor: pointer;color: gray;" (click)="openBottomSheet()">chat</mat-icon>
+            </div>
+            <div class="profile-section-right">
+              <span>Rambabu Padimi</span
+                ><img
+                  src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+                />
+                <div style="cursor: pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#5f6368"
+                  >
+                    <path
+                      d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"
+                    />
+                  </svg>
+                </div>
+    
             </div>
 
-            <div class="answers_section">
-                <ngx-editor-menu [editor]="answerEditor" [toolbar]="toolbar"> </ngx-editor-menu>
-                <ngx-editor  [editor]="answerEditor"  [(ngModel)]="selectedAnswer" [placeholder]="'Type question here...'"></ngx-editor>
-                <!-- <p [innerHTML]="selectedAnswer"></p> -->
+
+
+          </div>
+          <!-- <ngx-editor
+            [editor]="answerEditor"
+            [(ngModel)]="selectedAnswer"
+            [placeholder]="'Type question here...'"
+          ></ngx-editor> -->
+         
+          <div style="background-color: white;background-color: white;
+          padding: 12px;
+          font-size: 16px;
+          border-radius: 6px;">
+             <!-- <p [innerHTML]="selectedAnswer | customformat"></p>  -->
+
+             <!-- <ngx-editor  [editor]="answerEditor"  [(ngModel)]="selectedAnswer" ></ngx-editor> -->
+
+             <div #editorContainer class="editor-container"></div>
+ 
             </div>
         </div>
-    </section>
+
+        <br />
+
+      
+      </div>
+    </div>
+  </section>
 </div>

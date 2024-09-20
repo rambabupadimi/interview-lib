@@ -22,8 +22,12 @@
             "input": "user-portal/public"
           }
         ],
-        "styles": ["user-portal/src/styles.scss"],
-        "scripts": []
+        "styles": [
+          "user-portal/src/styles.scss",
+          "node_modules/quill/dist/quill.snow.css"],
+        "scripts": [
+
+        ]
       },
       "configurations": {
         "production": {

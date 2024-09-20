@@ -1,0 +1,47 @@
+<div class="questions-left-section">
+
+     
+    <div class="technology">
+      <div>Select Technology :</div> <br/>
+      <mat-form-field appearance="outline">
+        <mat-label>Technology</mat-label>
+        <select matNativeControl>
+          <!-- @for (item of technologyList; track $index) {
+            <option [value]="item.id"  >{{item.name}}</option>
+          } -->
+
+          <option [value]="3">343</option>
+          <option [value]="4">344</option>
+
+        </select>
+      </mat-form-field>
+    </div>
+
+   
+    <div class="question">
+    <div>Enter Question :</div> <br/>
+    <div class="NgxEditor__Wrapper">
+        <ngx-editor-menu [editor]="questionEditor" [toolbar]="toolbar"> </ngx-editor-menu>
+        <ngx-editor  [editor]="questionEditor"  [(ngModel)]="questionContent" [placeholder]="'Type question here...'"></ngx-editor>
+      </div>
+    </div>
+    <br/><br/>    
+    <div class="answer">
+        <div>Enter Answer :</div> <br/>
+        <div class="NgxEditor__Wrapper">
+            <ngx-editor-menu [editor]="answerEditor" [toolbar]="toolbar"> </ngx-editor-menu>
+            <ngx-editor [editor]="answerEditor"  [(ngModel)]="answerContent" [placeholder]="'Type  answer here...'"></ngx-editor>
+          </div>
+        </div>
+    <br/>
+
+
+    <div *ngIf="isEdit">
+    <button mat-stroked-button color="primary" type="button" (click)="cancelEdit()" >Cancel</button>
+    <button mat-stroked-button color="primary" type="button" (click)="updateQuestion()" >Update</button>
+    </div>
+
+    <button *ngIf="!isEdit" mat-stroked-button color="primary" type="button" (click)="closeDialog()"  >Cancel</button> &nbsp; &nbsp;
+    <button *ngIf="!isEdit" mat-stroked-button color="primary" type="button" (click)="saveQuestion()" >Save</button>
+
+</div>
