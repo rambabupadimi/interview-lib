@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   editorContainer: ElementRef | null = null;
 
   editor: Quill | undefined;
- content = '';
+  content = '';
 
 
 
@@ -102,11 +102,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
  
   readonly dialog = inject(MatDialog);
   private _bottomSheet = inject(MatBottomSheet);
-
-
-
-
-
 
   ngOnInit(): void {
     this.answerEditor = new Editor();
@@ -119,54 +114,32 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     this.setData();
     this.initData();
+    this.initEditor();
+  
 
+  }
+
+  initEditor() {
     if (this.editorContainer) {
       try {
           this.editor = new Quill(this.editorContainer.nativeElement, {
             modules: {
-              toolbar: [
-                // Text formatting
-                [{ 'font': [] }], // Font selection
-                [{ 'header': [1, 2, 3, 4, 5, 6, false] }], // Headers (h1-h6)
-                ['bold', 'italic', 'underline', 'strike'], // Bold, Italic, Underline, Strike-through
-          
-                // Subscript/Superscript
-                [{ 'script': 'sub' }, { 'script': 'super' }], // Subscript / Superscript
-          
-                // Lists
-                [{ 'list': 'ordered' }, { 'list': 'bullet' }], // Ordered & Unordered list
-          
-                // Indentation
-                [{ 'indent': '-1' }, { 'indent': '+1' }], // Outdent and Indent
-          
-                // Alignment
-                [{ 'align': [] }], // Alignment options
-          
-                // Line height and blockquotes
-                [{ 'lineheight': [] }], // Line height adjustment
-                ['blockquote', 'code-block'], // Blockquote and Code block
-          
-                // Links, images, and videos
-                ['link', 'image', 'video'], // Hyperlink, Image, Video embedding
-          
-                // Text color & background
-                [{ 'color': [] }, { 'background': [] }], // Text color and background color
-          
-                // Clear formatting
-                ['clean'], // Remove formatting button
-              ],
+              toolbar: false,
               syntax: {
                 highlight: (text:any) => hljs.highlightAuto(text).value // Highlight the text
               },
             },
+            
             theme: 'snow',
           });
+          this.editor.disable();
       } catch (error) {
           console.error("Error creating Quill editor:", error);
       }
   } else {
       console.error("Element with #editorContainer not found!");
   }
+  
   }
 
   ngAfterViewInit(): void {

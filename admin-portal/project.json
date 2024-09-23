@@ -22,7 +22,8 @@
             "input": "admin-portal/public"
           }
         ],
-        "styles": ["admin-portal/src/styles.scss"],
+        "styles": ["admin-portal/src/styles.scss",
+        "node_modules/quill/dist/quill.snow.css"],
         "scripts": []
       },
       "configurations": {
